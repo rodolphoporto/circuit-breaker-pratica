@@ -4,6 +4,7 @@ import com.example.publication.client.CommentClient;
 import com.example.publication.domain.Publication;
 import com.example.publication.mapper.PublicationMapper;
 import com.example.publication.repository.PublicationRepository;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,13 +33,13 @@ public class PublicationService {
                 .map(publicationMapper::toPublication).toList();
     }
 
+    @CircuitBreaker(name = "comments")
     public Publication findById(String id) {
         var publication = publicationRepository.findById(id)
                 .map(publicationMapper::toPublication)
                 .orElseThrow(() -> new RuntimeException("Publication not found"));
 
         var comments = commentClient.getComments(id);
-
         publication.setComments(comments);
         return publication;
     }
