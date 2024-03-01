@@ -17,6 +17,9 @@ resilience4j:
     instances:
       comments:
         sliding-window-size: 8
-        minimum-number-of-calls: 4
-        permitted-number-of-calls-in-half-open-state: 2
-        wait-duration-in-open-state: 10s
+#        minimum-number-of-calls: 4
+#        permitted-number-of-calls-in-half-open-state: 2
+#        wait-duration-in-open-state: 10s
+        slow-call-duration-threshold:
+          seconds: 2
+        slow-call-rate-threshold: 50

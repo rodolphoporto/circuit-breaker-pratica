@@ -1,0 +1,19 @@
+{
+   "request":{
+      "method":"GET",
+      "url":"/comments/64d1739b5bee710ddffd936d"
+   },
+   "response":{
+      "fixedDelayMilliseconds": "3000",
+      "status":200,
+      "headers":{
+         "Content-Type":"application/json"
+      },
+      "jsonBody":[
+         {
+            "author":"Rodolpho",
+            "text":"Muito bom o curso."
+         }
+      ]
+   }
+}
