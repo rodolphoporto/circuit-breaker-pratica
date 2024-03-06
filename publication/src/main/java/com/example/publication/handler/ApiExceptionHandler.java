@@ -17,7 +17,7 @@ public class ApiExceptionHandler {
             Exception e,
             HttpServletRequest request
     ) {
-        ErrorResponse error = new ErrorResponse.builder()
+        ErrorResponse error = ErrorResponse.builder()
                 .timestamp(System.currentTimeMillis())
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .message(e.getMessage())

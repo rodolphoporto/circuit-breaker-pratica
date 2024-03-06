@@ -1,4 +1,4 @@
-package com.example.publication.execptions;
+package com.example.publication.exceptions;
 
 public class FallbackException extends RuntimeException {
 
