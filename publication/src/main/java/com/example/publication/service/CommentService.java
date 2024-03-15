@@ -13,11 +13,14 @@ import java.util.List;
 @Service
 public class CommentService {
 
-    @Autowired
-    private CommentClient commentClient;
+    private final CommentClient commentClient;
+    private final RedisService redisService;
 
     @Autowired
-    private RedisService redisService;
+    public CommentService(CommentClient commentClient, RedisService redisService) {
+        this.commentClient = commentClient;
+        this.redisService = redisService;
+    }
 
     @CircuitBreaker(name = "comments", fallbackMethod = "getCommentsFallback")
     public List<Comment> getComments(String id) {
