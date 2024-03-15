@@ -4,8 +4,8 @@ spring:
       host: localhost
       port: 27017
       authentication-database: admin
-      username: root
-      password: example
+#      username: root
+#      password: example
       database: circuit-breaker
 
 client:
@@ -18,8 +18,7 @@ resilience4j:
       comments:
         sliding-window-size: 8
         minimum-number-of-calls: 4
-#        permitted-number-of-calls-in-half-open-state: 2
-#        wait-duration-in-open-state: 10s
-#        slow-call-duration-threshold:
-#          seconds: 2
-#        slow-call-rate-threshold: 50
+#        permitted-number-of-calls-in-half-open-state: 2 # número de chamadas permitidas no estado semi-aberto
+#        wait-duration-in-open-state: 10s # tempo de espera no estado aberto
+#        slow-call-duration-threshold: 2000 # duração da chamada lenta
+#        slow-call-rate-threshold: 50 # taxa de chamada lenta

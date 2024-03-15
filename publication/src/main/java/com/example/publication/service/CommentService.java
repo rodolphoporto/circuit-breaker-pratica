@@ -19,7 +19,7 @@ public class CommentService {
     @Autowired
     private RedisService redisService;
 
-    @CircuitBreaker(name = "comments", fallbackMethod = "findByIdFallback")
+    @CircuitBreaker(name = "comments", fallbackMethod = "getCommentsFallback")
     public List<Comment> getComments(String id) {
         var comments = commentClient.getComments(id);
         redisService.save(comments, id);
@@ -28,6 +28,8 @@ public class CommentService {
 
     private List<Comment> getCommentsFallback(String id, Throwable cause) {
         log.warn("[WARN] fallback with id {}", id);
+//        return List.of();
+//        throw new FallbackException(cause);
         return redisService.findById(id);
     }
 

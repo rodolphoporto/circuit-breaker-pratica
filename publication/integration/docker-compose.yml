@@ -1,7 +1,7 @@
 version: "3.1"
 services:
   mongo:
-    image: mongo
+    image: mongo:6.0.6
     restart: always
     ports:
     - "27017:27017"
@@ -9,7 +9,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
   mongo-express:
-    image: mongo-express
+    image: mongo-express:0.61.0  # Versão compatível com o MongoDB 6.0
     restart: always
     ports:
     - "8083:8083"
