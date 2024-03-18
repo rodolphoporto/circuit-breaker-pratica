@@ -29,10 +29,9 @@ public class CommentService {
         return comments;
     }
 
+    @SuppressWarnings("unused")
     private List<Comment> getCommentsFallback(String id, Throwable cause) {
         log.warn("[WARN] fallback with id {}", id);
-//        return List.of();
-//        throw new FallbackException(cause);
         return redisService.findById(id);
     }
 
